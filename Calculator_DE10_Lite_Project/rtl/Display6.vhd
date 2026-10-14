@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 -- Segment order is HEXn(7 downto 0) = DP, g, f, e, d, c, b, a
--- Segments are active-low (0 lights segment). DP: HEX1 for InPut.A/B, HEX0 for FunC.
+-- Segments are active-low (0 lights segment). DP: HEX1 for InPut.A/B, HEX2 for FunC.
 entity Display6 is
     port (
         MODE : in std_logic_vector(2 downto 0);
@@ -36,10 +36,18 @@ architecture rtl of Display6 is
             when 'B' => return x"80"; -- abcdefg: closest uppercase B approximation on 7-segment
             when 'b' => return x"83"; -- cdefg
             when 'C' => return x"C6"; -- adef
+            when 'd' => return x"A1"; -- bcdeg
+            when 'E' => return x"86"; -- adefg
             when 'F' => return x"8E"; -- aefg
+            when 'G' => return x"C2"; -- acdef
+            when 'H' => return x"89"; -- bcefg
             when 'I' => return x"F9"; -- bc
+            when 'L' => return x"C7"; -- def
             when 'n' => return x"AB"; -- ceg
+            when 'O' => return x"C0"; -- abcdef
             when 'P' => return x"8C"; -- abefg
+            when 'r' => return x"AF"; -- eg
+            when 'S' => return x"92"; -- acdfg
             when 't' => return x"87"; -- defg
             when 'U' => return x"C1"; -- bcdef
             when 'u' => return x"E3"; -- cde (lowercase u)
@@ -110,10 +118,11 @@ begin
                     if show_digit then d(i) := numeric_digit(digit_val); end if;
                 end loop;
 
-            when "010" => -- Function prompt: F u n C. (HEX0 decimal point on)
-                d(3) := glyph('F'); d(2) := glyph('u');
-                d(1) := glyph('n'); d(0) := glyph('C');
-                d(0)(7) := '0'; -- enable HEX0 decimal point after C
+            when "010" => -- Function prompt left-aligned: HEX5..HEX2 = F u n C.
+                d(5) := glyph('F'); d(4) := glyph('u');
+                d(3) := glyph('n'); d(2) := glyph('C');
+                d(2)(7) := '0'; -- decimal point after C (HEX2)
+                -- HEX1 and HEX0 remain blank.
 
             when "011" => -- Operator patterns shifted to LEFT edge of display
                 -- Preserve the exact segment shapes; HEX5 is leftmost, HEX0 rightmost.

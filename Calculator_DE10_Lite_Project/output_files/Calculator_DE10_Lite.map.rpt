@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Calculator_DE10_Lite
-Wed Oct 14 13:24:08 2026
+Wed Oct 14 13:45:47 2026
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -66,13 +66,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Oct 14 13:24:08 2026       ;
+; Analysis & Synthesis Status        ; Successful - Wed Oct 14 13:45:47 2026       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; Calculator_DE10_Lite                        ;
 ; Top-level Entity Name              ; Calculator_DE10_Lite                        ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 1,082                                       ;
-;     Total combinational functions  ; 1,033                                       ;
+; Total logic elements               ; 1,080                                       ;
+;     Total combinational functions  ; 1,031                                       ;
 ;     Dedicated logic registers      ; 242                                         ;
 ; Total registers                    ; 242                                         ;
 ; Total pins                         ; 71                                          ;
@@ -212,16 +212,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 1,082          ;
+; Estimated Total logic elements              ; 1,080          ;
 ;                                             ;                ;
-; Total combinational functions               ; 1033           ;
+; Total combinational functions               ; 1031           ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 713            ;
+;     -- 4 input functions                    ; 709            ;
 ;     -- 3 input functions                    ; 168            ;
-;     -- <=2 input functions                  ; 152            ;
+;     -- <=2 input functions                  ; 154            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 973            ;
+;     -- normal mode                          ; 971            ;
 ;     -- arithmetic mode                      ; 60             ;
 ;                                             ;                ;
 ; Total registers                             ; 242            ;
@@ -234,8 +234,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 242            ;
-; Total fan-out                               ; 4743           ;
-; Average fan-out                             ; 3.35           ;
+; Total fan-out                               ; 4731           ;
+; Average fan-out                             ; 3.34           ;
 +---------------------------------------------+----------------+
 
 
@@ -244,7 +244,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------+----------------------+--------------+
 ; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                   ; Entity Name          ; Library Name ;
 +---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------+----------------------+--------------+
-; |Calculator_DE10_Lite                 ; 1033 (0)            ; 242 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 71   ; 0            ; 0          ; |Calculator_DE10_Lite                                                                                 ; Calculator_DE10_Lite ; work         ;
+; |Calculator_DE10_Lite                 ; 1031 (0)            ; 242 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 71   ; 0            ; 0          ; |Calculator_DE10_Lite                                                                                 ; Calculator_DE10_Lite ; work         ;
 ;    |ButtonRelease:BUTTON|             ; 31 (31)             ; 24 (24)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|ButtonRelease:BUTTON                                                            ; ButtonRelease        ; work         ;
 ;    |Calculator_Core:CONTROL|          ; 411 (81)            ; 218 (74)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL                                                         ; Calculator_Core      ; work         ;
 ;       |AdderSubtractor10:ADD_SUB|     ; 22 (1)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB                               ; AdderSubtractor10    ; work         ;
@@ -258,10 +258,10 @@ https://fpgasoftware.intel.com/eula.
 ;          |FullAdder:\GEN_FA:7:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:7:FA        ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:8:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:8:FA        ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:9:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:9:FA        ; FullAdder            ; work         ;
-;       |Divider10:DIV|                 ; 202 (147)           ; 85 (85)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV                                           ; Divider10            ; work         ;
+;       |Divider10:DIV|                 ; 202 (145)           ; 85 (85)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV                                           ; Divider10            ; work         ;
 ;          |FullAdder:\GEN_FA:0:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:0:FA                    ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:10:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:10:FA                   ; FullAdder            ; work         ;
-;          |FullAdder:\GEN_FA:11:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:11:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:11:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:11:FA                   ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:12:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:12:FA                   ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:13:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:13:FA                   ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:14:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:14:FA                   ; FullAdder            ; work         ;
@@ -273,7 +273,7 @@ https://fpgasoftware.intel.com/eula.
 ;          |FullAdder:\GEN_FA:3:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:3:FA                    ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:4:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:4:FA                    ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:5:FA|     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:5:FA                    ; FullAdder            ; work         ;
-;          |FullAdder:\GEN_FA:6:FA|     ; 5 (5)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:6:FA                    ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:6:FA|     ; 6 (6)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:6:FA                    ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:7:FA|     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:7:FA                    ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:8:FA|     ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:8:FA                    ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:9:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:9:FA                    ; FullAdder            ; work         ;
@@ -316,7 +316,7 @@ https://fpgasoftware.intel.com/eula.
 ;          |FullAdder:\GEN_FA:7:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:7:FA                 ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:8:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:8:FA                 ; FullAdder            ; work         ;
 ;          |FullAdder:\GEN_FA:9:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:9:FA                 ; FullAdder            ; work         ;
-;    |Display6:DISPLAY|                 ; 591 (591)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Display6:DISPLAY                                                                ; Display6             ; work         ;
+;    |Display6:DISPLAY|                 ; 589 (589)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Display6:DISPLAY                                                                ; Display6             ; work         ;
 +---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------+----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -426,18 +426,17 @@ Encoding Type:  One-Hot
 ; 6:1                ; 10 bits   ; 40 LEs        ; 10 LEs               ; 30 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Data_Divisor[9]    ;
 ; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Bit_Counter[2]     ;
 ; 7:1                ; 20 bits   ; 80 LEs        ; 20 LEs               ; 60 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|Data_Product[4] ;
-; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Add_Y[3]           ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Add_Y[11]          ;
 ; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Add_X              ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Add_X[8]           ;
-; 9:1                ; 7 bits    ; 42 LEs        ; 35 LEs               ; 7 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux75                                   ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Add_X[2]           ;
+; 9:1                ; 7 bits    ; 42 LEs        ; 28 LEs               ; 14 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux76                                   ;
 ; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|Selector55      ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux112                                  ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux115                                  ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux105                                  ;
-; 11:1               ; 2 bits    ; 14 LEs        ; 6 LEs                ; 8 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux108                                  ;
-; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux102                                  ;
-; 11:1               ; 7 bits    ; 49 LEs        ; 35 LEs               ; 14 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux96                                   ;
-; 11:1               ; 7 bits    ; 49 LEs        ; 35 LEs               ; 14 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux87                                   ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 8 LEs                ; 6 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux109                                  ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux101                                  ;
+; 11:1               ; 7 bits    ; 49 LEs        ; 35 LEs               ; 14 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux94                                   ;
+; 11:1               ; 7 bits    ; 49 LEs        ; 28 LEs               ; 21 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux87                                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
 
 
@@ -610,18 +609,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA CLR           ; 156                         ;
 ;     ENA CLR SCLR      ; 20                          ;
 ;     ENA CLR SLD       ; 10                          ;
-; cycloneiii_lcell_comb ; 1036                        ;
+; cycloneiii_lcell_comb ; 1034                        ;
 ;     arith             ; 60                          ;
 ;         2 data inputs ; 60                          ;
-;     normal            ; 976                         ;
+;     normal            ; 974                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 6                           ;
-;         2 data inputs ; 87                          ;
+;         2 data inputs ; 89                          ;
 ;         3 data inputs ; 168                         ;
-;         4 data inputs ; 713                         ;
+;         4 data inputs ; 709                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 26.80                       ;
-; Average LUT depth     ; 15.03                       ;
+; Average LUT depth     ; 14.90                       ;
 +-----------------------+-----------------------------+
 
 
@@ -640,7 +639,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed Oct 14 13:23:53 2026
+    Info: Processing started: Wed Oct 14 13:45:32 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Calculator_DE10_Lite -c Calculator_DE10_Lite
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -685,7 +684,7 @@ Info (12128): Elaborating entity "Display6" for hierarchy "Display6:DISPLAY" Fil
 Info (13000): Registers with preset signals will power-up high File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/ButtonRelease.vhd Line: 16
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 11
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 11
     Warning (13410): Pin "HEX3[7]" is stuck at VCC File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 11
     Warning (13410): Pin "HEX4[7]" is stuck at VCC File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 11
     Warning (13410): Pin "HEX5[7]" is stuck at VCC File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 11
@@ -701,14 +700,14 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1156 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1154 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 58 output pins
-    Info (21061): Implemented 1085 logic cells
+    Info (21061): Implemented 1083 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
-    Info: Peak virtual memory: 4794 megabytes
-    Info: Processing ended: Wed Oct 14 13:24:08 2026
+    Info: Peak virtual memory: 4795 megabytes
+    Info: Processing ended: Wed Oct 14 13:45:47 2026
     Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:33
+    Info: Total CPU time (on all processors): 00:00:30
 
 
