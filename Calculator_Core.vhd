@@ -39,12 +39,12 @@ architecture rtl of Calculator_Core is
     signal div_done, div_by_zero : std_logic;
     signal mul_start, div_start : std_logic;
 
-    function fits_five_digits(x : signed(19 downto 0)) return boolean is
+    function fits_result_display(x : signed(19 downto 0)) return boolean is
         variable n : integer;
     begin
         n := to_integer(x);
-        if n >= 0 then return n <= 99999;
-        else return n >= -9999;  -- HEX4 must display sign
+        if n >= 0 then return n <= 999999; -- HEX5..HEX0 = 6 decimal digits
+        else return n >= -99999;            -- HEX5 = sign, 5 digits remain
         end if;
     end function;
 
@@ -108,7 +108,7 @@ begin
                     if op_reg = "11" or op_reg = "10" then
                         ext_addsub := resize(signed(addsub_result), 20);
                         result_reg <= std_logic_vector(ext_addsub);
-                        if fits_five_digits(ext_addsub) then
+                        if fits_result_display(ext_addsub) then
                             state <= S8_RESULT;
                         else
                             state <= S9_ERROR;
@@ -120,7 +120,7 @@ begin
                 when S7_WAIT_CALC =>
                     if op_reg = "01" and mul_done = '1' then
                         result_reg <= mul_result;
-                        if fits_five_digits(signed(mul_result)) then
+                        if fits_result_display(signed(mul_result)) then
                             state <= S8_RESULT;
                         else
                             state <= S9_ERROR;
@@ -141,7 +141,7 @@ begin
         end if;
     end process;
 
-    -- Modes: 0 SELECT, 1 LIVE NUMBER, 2 OP PROMPT, 3 LIVE OP,
+    -- Modes: 0 InputA, 1 LIVE NUMBER, 2 FunC PROMPT, 3 LIVE OP,
     --        4 B PROMPT, 5 RESULT, 6 ERROR, 7 PROCESSING.
     with state select DISP_MODE <=
         "000" when S0_IDLE,
