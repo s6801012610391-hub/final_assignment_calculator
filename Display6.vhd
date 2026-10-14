@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 -- Segment order is HEXn(7 downto 0) = DP, g, f, e, d, c, b, a
--- Segments are active-low (0 lights segment). DP always off.
+-- Segments are active-low (0 lights segment). DP: HEX1 for InPut.A/B, HEX0 for FunC.
 entity Display6 is
     port (
         MODE : in std_logic_vector(2 downto 0);
@@ -33,6 +33,7 @@ architecture rtl of Display6 is
             when '8' => return x"80"; -- abcdefg
             when '9' => return x"90"; -- abcdfg
             when 'A' => return x"88"; -- abcefg
+            when 'B' => return x"80"; -- abcdefg: closest uppercase B approximation on 7-segment
             when 'b' => return x"83"; -- cdefg
             when 'C' => return x"C6"; -- adef
             when 'd' => return x"A1"; -- bcdeg
@@ -49,6 +50,7 @@ architecture rtl of Display6 is
             when 'S' => return x"92"; -- acdfg
             when 't' => return x"87"; -- defg
             when 'U' => return x"C1"; -- bcdef
+            when 'u' => return x"E3"; -- cde (lowercase u)
             when 'x' => return x"89"; -- bcefg
             when '+' => return x"89"; -- bcefg
             when '-' => return x"BF"; -- g
@@ -67,16 +69,6 @@ architecture rtl of Display6 is
             when 6 => return glyph('6'); when 7 => return glyph('7');
             when 8 => return glyph('8'); when 9 => return glyph('9');
             when others => return glyph(' ');
-        end case;
-    end function;
-
-    function op_symbol(o : std_logic_vector(1 downto 0)) return std_logic_vector is
-    begin
-        case o is
-            when "11" => return glyph('+');
-            when "10" => return glyph('-');
-            when "01" => return glyph('x');
-            when others => return glyph('d'); -- approx DIV glyph
         end case;
     end function;
 
@@ -111,9 +103,10 @@ begin
     begin
         for i in 0 to 5 loop d(i) := glyph(' '); end loop;
         case MODE is
-            when "000" => -- SELECT, HEX5 .. HEX0
-                d(5) := glyph('S'); d(4) := glyph('E'); d(3) := glyph('L');
-                d(2) := glyph('E'); d(1) := glyph('C'); d(0) := glyph('t');
+            when "000" => -- Input A prompt, HEX5 .. HEX0: I n P u t. A
+                d(5) := glyph('I'); d(4) := glyph('n'); d(3) := glyph('P');
+                d(2) := glyph('u'); d(1) := glyph('t'); d(0) := glyph('A');
+                d(1)(7) := '0'; -- decimal point after t (HEX1)
 
             when "001" => -- Signed live switch value
                 bcdv := bcd20(absolute20(signed(VALUE)));
@@ -125,45 +118,66 @@ begin
                     if show_digit then d(i) := numeric_digit(digit_val); end if;
                 end loop;
 
-            when "010" => -- Choose operation prompt
-                d(1) := glyph('O'); d(0) := glyph('P');
+            when "010" => -- Function prompt: F u n C. (HEX0 decimal point on)
+                d(3) := glyph('F'); d(2) := glyph('u');
+                d(1) := glyph('n'); d(0) := glyph('C');
+                d(0)(7) := '0'; -- enable HEX0 decimal point after C
 
-            when "011" => -- SW[1:0] selects 2 display symbols
-                d(1) := op_symbol(OP); d(0) := op_symbol(OP);
+            when "011" => -- Operator patterns shifted to LEFT edge of display
+                -- Preserve the exact segment shapes; HEX5 is leftmost, HEX0 rightmost.
+                -- Active-low: 0 lights a segment. Other digits stay blank.
+                case OP is
+                    when "11" => -- PLUS: HEX5 = b,c,g; HEX4 = g
+                        d(5) := x"B9";
+                        d(4) := x"BF";
+                    when "10" => -- MINUS: HEX5 = g; HEX4 = g
+                        d(5) := x"BF";
+                        d(4) := x"BF";
+                    when "01" => -- MULTIPLY: HEX5 = e,f,g; HEX4 = e,f
+                        d(5) := x"8F";
+                        d(4) := x"CF";
+                    when others => -- DIVIDE: HEX5 = g; HEX4 = a,d,g; HEX3 = g
+                        d(5) := x"BF";
+                        d(4) := x"B6";
+                        d(3) := x"BF";
+                end case;
 
-            when "100" => -- Prompt for input B
-                d(4) := glyph('I'); d(3) := glyph('n');
-                d(2) := glyph('P'); d(0) := glyph('b');
+            when "100" => -- Input B prompt, HEX5 .. HEX0: I n P u t. B
+                d(5) := glyph('I'); d(4) := glyph('n'); d(3) := glyph('P');
+                d(2) := glyph('u'); d(1) := glyph('t'); d(0) := glyph('B');
+                d(1)(7) := '0'; -- decimal point after t (HEX1)
 
             when "101" => -- Final result
                 if OP /= "00" then
+                    -- Show only signed DECIMAL RESULT; no operation symbol
+                    -- in front of the number. Positive: up to six digits.
+                    -- Negative: HEX5 is minus, HEX4..HEX0 magnitude.
                     bcdv := bcd20(absolute20(signed(VALUE)));
-                    d(5) := op_symbol(OP);
+                    show_digit := false;
                     if VALUE(19) = '1' then
-                        d(4) := glyph('-');
-                        show_digit := false;
-                        for i in 3 downto 0 loop
+                        d(5) := glyph('-');
+                        for i in 4 downto 0 loop
                             digit_val := to_integer(unsigned(bcdv(i*4+3 downto i*4)));
                             if digit_val /= 0 or i = 0 then show_digit := true; end if;
                             if show_digit then d(i) := numeric_digit(digit_val); end if;
                         end loop;
                     else
-                        show_digit := false;
-                        for i in 4 downto 0 loop
+                        for i in 5 downto 0 loop
                             digit_val := to_integer(unsigned(bcdv(i*4+3 downto i*4)));
                             if digit_val /= 0 or i = 0 then show_digit := true; end if;
                             if show_digit then d(i) := numeric_digit(digit_val); end if;
                         end loop;
                     end if;
                 else
-                    -- Divide: HEX5 signed quotient indicator, HEX4:3 = quotient,
+                    -- Divide: HEX5 minus only for negative quotient; HEX4:3 = quotient,
                     -- HEX2 triple bar, HEX1:0 = remainder.
                     -- The remainder magnitude is shown. Its negative sign
                     -- is indicated by HEX1 decimal point (active-low).
                     qbcd := bcd20(absolute20(resize(signed(Q), 20)));
                     rbcd := bcd20(absolute20(resize(signed(R), 20)));
-                    if Q(10) = '1' then d(5) := glyph('-');
-                    else d(5) := glyph('d'); end if;
+                    -- Blank leading HEX5 for a non-negative quotient;
+                    -- only show '-' there when the quotient is negative.
+                    if Q(10) = '1' then d(5) := glyph('-'); end if;
                     d(4) := numeric_digit(to_integer(unsigned(qbcd(7 downto 4))));
                     d(3) := numeric_digit(to_integer(unsigned(qbcd(3 downto 0))));
                     d(2) := glyph('=');
