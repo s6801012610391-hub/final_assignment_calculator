@@ -1,0 +1,31 @@
+digraph CalculatorFSM {
+  graph [rankdir=TB, bgcolor="white", label="Calculator Main FSM – DE10-Lite", labelloc=t, fontsize=19, fontname="Arial", nodesep=.45, ranksep=.65];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=12, color="#64748b", fillcolor="#e0f2fe", margin=.15];
+  edge [fontname="Arial", fontsize=10, color="#475569"];
+  reset [shape=point, label="", width=.08, fillcolor="#1e40af"];
+  reset -> S0 [label="KEY0 reset (active-low)"];
+  S0 [label="S0 IDLE\nShow SELECT"];
+  S1 [label="S1 SHOW_A\nLive signed SW[9:0]"];
+  S2 [label="S2 SELECT_OP\nShow OP prompt"];
+  S3 [label="S3 SHOW_OP\nLive operation SW[1:0]"];
+  S4 [label="S4 PROMPT_B\nShow Input B prompt"];
+  S5 [label="S5 SHOW_B\nLive signed SW[9:0]"];
+  S6 [label="S6 START_CALC\nAdd/Sub or launch Mul/Div", fillcolor="#fef3c7"];
+  S7 [label="S7 WAIT_CALC\nAwait MUL_DONE / DIV_DONE", fillcolor="#fef3c7"];
+  S8 [label="S8 RESULT\nDONE = 1 | HEX result", fillcolor="#dcfce7"];
+  S9 [label="S9 ERROR\nDONE = 1 | FFFFFF", fillcolor="#fee2e2"];
+  S0 -> S1 [label="KEY1 released"];
+  S1 -> S2 [label="KEY1 released / capture A"];
+  S2 -> S3 [label="KEY1 released"];
+  S3 -> S4 [label="KEY1 released / capture OP"];
+  S4 -> S5 [label="KEY1 released"];
+  S5 -> S6 [label="KEY1 released / capture B"];
+  S6 -> S7 [label="MUL / DIV: one-cycle start"];
+  S6 -> S8 [label="ADD / SUB: valid", color="#16a34a"];
+  S6 -> S9 [label="ADD / SUB: too many digits", color="#b91c1c"];
+  S7 -> S8 [label="submodule DONE + valid", color="#16a34a"];
+  S7 -> S9 [label="divide zero / display overflow", color="#b91c1c"];
+  S7 -> S7 [label="not done"];
+  S8 -> S8 [label="hold until KEY0"];
+  S9 -> S9 [label="hold until KEY0"];
+}

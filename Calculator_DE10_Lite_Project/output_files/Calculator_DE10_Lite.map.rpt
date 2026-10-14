@@ -1,0 +1,714 @@
+Analysis & Synthesis report for Calculator_DE10_Lite
+Wed Oct 14 13:24:08 2026
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Calculator_DE10_Lite|Calculator_Core:CONTROL|state
+  9. State Machine - |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|State
+ 10. State Machine - |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|State
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: Top-level Entity: |Calculator_DE10_Lite
+ 16. Parameter Settings for User Entity Instance: ButtonRelease:BUTTON
+ 17. Port Connectivity Checks: "Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:19:FA"
+ 18. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:19:FA"
+ 19. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:9:FA"
+ 20. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:8:FA"
+ 21. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:7:FA"
+ 22. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:6:FA"
+ 23. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:5:FA"
+ 24. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:4:FA"
+ 25. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:3:FA"
+ 26. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:2:FA"
+ 27. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:1:FA"
+ 28. Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:0:FA"
+ 29. Port Connectivity Checks: "Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:10:FA"
+ 30. Port Connectivity Checks: "Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB"
+ 31. Port Connectivity Checks: "Calculator_Core:CONTROL"
+ 32. Post-Synthesis Netlist Statistics for Top Partition
+ 33. Elapsed Time Per Partition
+ 34. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Oct 14 13:24:08 2026       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; Calculator_DE10_Lite                        ;
+; Top-level Entity Name              ; Calculator_DE10_Lite                        ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 1,082                                       ;
+;     Total combinational functions  ; 1,033                                       ;
+;     Dedicated logic registers      ; 242                                         ;
+; Total registers                    ; 242                                         ;
+; Total pins                         ; 71                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                  ;
++------------------------------------------------------------------+----------------------+----------------------+
+; Option                                                           ; Setting              ; Default Value        ;
++------------------------------------------------------------------+----------------------+----------------------+
+; Device                                                           ; 10M50DAF484C7G       ;                      ;
+; Top-level entity name                                            ; Calculator_DE10_Lite ; Calculator_DE10_Lite ;
+; Family name                                                      ; MAX 10               ; Cyclone V            ;
+; Use smart compilation                                            ; Off                  ; Off                  ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                   ; On                   ;
+; Enable compact report table                                      ; Off                  ; Off                  ;
+; Restructure Multiplexers                                         ; Auto                 ; Auto                 ;
+; Create Debugging Nodes for IP Cores                              ; Off                  ; Off                  ;
+; Preserve fewer node names                                        ; On                   ; On                   ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable               ; Enable               ;
+; Verilog Version                                                  ; Verilog_2001         ; Verilog_2001         ;
+; VHDL Version                                                     ; VHDL_1993            ; VHDL_1993            ;
+; State Machine Processing                                         ; Auto                 ; Auto                 ;
+; Safe State Machine                                               ; Off                  ; Off                  ;
+; Extract Verilog State Machines                                   ; On                   ; On                   ;
+; Extract VHDL State Machines                                      ; On                   ; On                   ;
+; Ignore Verilog initial constructs                                ; Off                  ; Off                  ;
+; Iteration limit for constant Verilog loops                       ; 5000                 ; 5000                 ;
+; Iteration limit for non-constant Verilog loops                   ; 250                  ; 250                  ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                   ; On                   ;
+; Infer RAMs from Raw Logic                                        ; On                   ; On                   ;
+; Parallel Synthesis                                               ; On                   ; On                   ;
+; DSP Block Balancing                                              ; Auto                 ; Auto                 ;
+; NOT Gate Push-Back                                               ; On                   ; On                   ;
+; Power-Up Don't Care                                              ; On                   ; On                   ;
+; Remove Redundant Logic Cells                                     ; Off                  ; Off                  ;
+; Remove Duplicate Registers                                       ; On                   ; On                   ;
+; Ignore CARRY Buffers                                             ; Off                  ; Off                  ;
+; Ignore CASCADE Buffers                                           ; Off                  ; Off                  ;
+; Ignore GLOBAL Buffers                                            ; Off                  ; Off                  ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                  ; Off                  ;
+; Ignore LCELL Buffers                                             ; Off                  ; Off                  ;
+; Ignore SOFT Buffers                                              ; On                   ; On                   ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                  ; Off                  ;
+; Optimization Technique                                           ; Balanced             ; Balanced             ;
+; Carry Chain Length                                               ; 70                   ; 70                   ;
+; Auto Carry Chains                                                ; On                   ; On                   ;
+; Auto Open-Drain Pins                                             ; On                   ; On                   ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                  ; Off                  ;
+; Auto ROM Replacement                                             ; On                   ; On                   ;
+; Auto RAM Replacement                                             ; On                   ; On                   ;
+; Auto DSP Block Replacement                                       ; On                   ; On                   ;
+; Auto Shift Register Replacement                                  ; Auto                 ; Auto                 ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto                 ; Auto                 ;
+; Auto Clock Enable Replacement                                    ; On                   ; On                   ;
+; Strict RAM Replacement                                           ; Off                  ; Off                  ;
+; Allow Synchronous Control Signals                                ; On                   ; On                   ;
+; Force Use of Synchronous Clear Signals                           ; Off                  ; Off                  ;
+; Auto RAM Block Balancing                                         ; On                   ; On                   ;
+; Auto RAM to Logic Cell Conversion                                ; Off                  ; Off                  ;
+; Auto Resource Sharing                                            ; Off                  ; Off                  ;
+; Allow Any RAM Size For Recognition                               ; Off                  ; Off                  ;
+; Allow Any ROM Size For Recognition                               ; Off                  ; Off                  ;
+; Allow Any Shift Register Size For Recognition                    ; Off                  ; Off                  ;
+; Use LogicLock Constraints during Resource Balancing              ; On                   ; On                   ;
+; Ignore translate_off and synthesis_off directives                ; Off                  ; Off                  ;
+; Timing-Driven Synthesis                                          ; On                   ; On                   ;
+; Report Parameter Settings                                        ; On                   ; On                   ;
+; Report Source Assignments                                        ; On                   ; On                   ;
+; Report Connectivity Checks                                       ; On                   ; On                   ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                  ; Off                  ;
+; Synchronization Register Chain Length                            ; 2                    ; 2                    ;
+; Power Optimization During Synthesis                              ; Normal compilation   ; Normal compilation   ;
+; HDL message level                                                ; Level2               ; Level2               ;
+; Suppress Register Optimization Related Messages                  ; Off                  ; Off                  ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000                 ; 5000                 ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000                 ; 5000                 ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                  ; 100                  ;
+; Clock MUX Protection                                             ; On                   ; On                   ;
+; Auto Gated Clock Conversion                                      ; Off                  ; Off                  ;
+; Block Design Naming                                              ; Auto                 ; Auto                 ;
+; SDC constraint protection                                        ; Off                  ; Off                  ;
+; Synthesis Effort                                                 ; Auto                 ; Auto                 ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                   ; On                   ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                  ; Off                  ;
+; Analysis & Synthesis Message Level                               ; Medium               ; Medium               ;
+; Disable Register Merging Across Hierarchies                      ; Auto                 ; Auto                 ;
+; Resource Aware Inference For Block RAM                           ; On                   ; On                   ;
++------------------------------------------------------------------+----------------------+----------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                          ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                   ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------+---------+
+; rtl/FullAdder.vhd                ; yes             ; User VHDL File  ; D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/FullAdder.vhd            ;         ;
+; rtl/AdderSubtractor10.vhd        ; yes             ; User VHDL File  ; D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/AdderSubtractor10.vhd    ;         ;
+; rtl/Magnitude10.vhd              ; yes             ; User VHDL File  ; D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Magnitude10.vhd          ;         ;
+; rtl/Multiplier10.vhd             ; yes             ; User VHDL File  ; D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Multiplier10.vhd         ;         ;
+; rtl/Divider10.vhd                ; yes             ; User VHDL File  ; D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Divider10.vhd            ;         ;
+; rtl/ButtonRelease.vhd            ; yes             ; User VHDL File  ; D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/ButtonRelease.vhd        ;         ;
+; rtl/Calculator_Core.vhd          ; yes             ; User VHDL File  ; D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_Core.vhd      ;         ;
+; rtl/Display6.vhd                 ; yes             ; User VHDL File  ; D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Display6.vhd             ;         ;
+; rtl/Calculator_DE10_Lite.vhd     ; yes             ; User VHDL File  ; D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd ;         ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 1,082          ;
+;                                             ;                ;
+; Total combinational functions               ; 1033           ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 713            ;
+;     -- 3 input functions                    ; 168            ;
+;     -- <=2 input functions                  ; 152            ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 973            ;
+;     -- arithmetic mode                      ; 60             ;
+;                                             ;                ;
+; Total registers                             ; 242            ;
+;     -- Dedicated logic registers            ; 242            ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 71             ;
+;                                             ;                ;
+; Embedded Multiplier 9-bit elements          ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 242            ;
+; Total fan-out                               ; 4743           ;
+; Average fan-out                             ; 3.35           ;
++---------------------------------------------+----------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                      ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------+----------------------+--------------+
+; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                   ; Entity Name          ; Library Name ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------+----------------------+--------------+
+; |Calculator_DE10_Lite                 ; 1033 (0)            ; 242 (0)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 71   ; 0            ; 0          ; |Calculator_DE10_Lite                                                                                 ; Calculator_DE10_Lite ; work         ;
+;    |ButtonRelease:BUTTON|             ; 31 (31)             ; 24 (24)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|ButtonRelease:BUTTON                                                            ; ButtonRelease        ; work         ;
+;    |Calculator_Core:CONTROL|          ; 411 (81)            ; 218 (74)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL                                                         ; Calculator_Core      ; work         ;
+;       |AdderSubtractor10:ADD_SUB|     ; 22 (1)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB                               ; AdderSubtractor10    ; work         ;
+;          |FullAdder:\GEN_FA:0:FA|     ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:0:FA        ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:1:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:1:FA        ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:2:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:2:FA        ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:3:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:3:FA        ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:4:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:4:FA        ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:5:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:5:FA        ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:6:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:6:FA        ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:7:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:7:FA        ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:8:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:8:FA        ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:9:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:9:FA        ; FullAdder            ; work         ;
+;       |Divider10:DIV|                 ; 202 (147)           ; 85 (85)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV                                           ; Divider10            ; work         ;
+;          |FullAdder:\GEN_FA:0:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:0:FA                    ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:10:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:10:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:11:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:11:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:12:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:12:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:13:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:13:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:14:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:14:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:15:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:15:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:16:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:16:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:17:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:17:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:18:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:18:FA                   ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:2:FA|     ; 5 (5)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:2:FA                    ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:3:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:3:FA                    ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:4:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:4:FA                    ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:5:FA|     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:5:FA                    ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:6:FA|     ; 5 (5)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:6:FA                    ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:7:FA|     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:7:FA                    ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:8:FA|     ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:8:FA                    ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:9:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:9:FA                    ; FullAdder            ; work         ;
+;          |Magnitude10:MAG_A|          ; 11 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_A                         ; Magnitude10          ; work         ;
+;             |FullAdder:\GEN_MAG:1:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_A|FullAdder:\GEN_MAG:1:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:2:FA| ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_A|FullAdder:\GEN_MAG:2:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:3:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_A|FullAdder:\GEN_MAG:3:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:4:FA| ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_A|FullAdder:\GEN_MAG:4:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:5:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_A|FullAdder:\GEN_MAG:5:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:6:FA| ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_A|FullAdder:\GEN_MAG:6:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:7:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_A|FullAdder:\GEN_MAG:7:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:8:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_A|FullAdder:\GEN_MAG:8:FA ; FullAdder            ; work         ;
+;          |Magnitude10:MAG_B|          ; 11 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_B                         ; Magnitude10          ; work         ;
+;             |FullAdder:\GEN_MAG:1:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_B|FullAdder:\GEN_MAG:1:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:2:FA| ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_B|FullAdder:\GEN_MAG:2:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:3:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_B|FullAdder:\GEN_MAG:3:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:4:FA| ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_B|FullAdder:\GEN_MAG:4:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:5:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_B|FullAdder:\GEN_MAG:5:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:6:FA| ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_B|FullAdder:\GEN_MAG:6:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:7:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_B|FullAdder:\GEN_MAG:7:FA ; FullAdder            ; work         ;
+;             |FullAdder:\GEN_MAG:8:FA| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Magnitude10:MAG_B|FullAdder:\GEN_MAG:8:FA ; FullAdder            ; work         ;
+;       |Multiplier10:MUL|              ; 106 (67)            ; 59 (59)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL                                        ; Multiplier10         ; work         ;
+;          |FullAdder:\GEN_FA:0:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:0:FA                 ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:10:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:10:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:11:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:11:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:12:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:12:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:13:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:13:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:14:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:14:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:15:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:15:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:16:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:16:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:17:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:17:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:18:FA|    ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:18:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:19:FA|    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:19:FA                ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:1:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:1:FA                 ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:2:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:2:FA                 ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:3:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:3:FA                 ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:4:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:4:FA                 ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:5:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:5:FA                 ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:6:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:6:FA                 ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:7:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:7:FA                 ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:8:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:8:FA                 ; FullAdder            ; work         ;
+;          |FullAdder:\GEN_FA:9:FA|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:9:FA                 ; FullAdder            ; work         ;
+;    |Display6:DISPLAY|                 ; 591 (591)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |Calculator_DE10_Lite|Display6:DISPLAY                                                                ; Display6             ; work         ;
++---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+-------------------------------------------------------------------------------------------------------+----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Calculator_DE10_Lite|Calculator_Core:CONTROL|state                                                                                                                                               ;
++---------------------+----------------+-----------------+--------------------+---------------------+-----------------+-------------------+------------------+--------------------+-----------------+---------------+
+; Name                ; state.S9_ERROR ; state.S8_RESULT ; state.S7_WAIT_CALC ; state.S6_START_CALC ; state.S5_SHOW_B ; state.S4_PROMPT_B ; state.S3_SHOW_OP ; state.S2_SELECT_OP ; state.S1_SHOW_A ; state.S0_IDLE ;
++---------------------+----------------+-----------------+--------------------+---------------------+-----------------+-------------------+------------------+--------------------+-----------------+---------------+
+; state.S0_IDLE       ; 0              ; 0               ; 0                  ; 0                   ; 0               ; 0                 ; 0                ; 0                  ; 0               ; 0             ;
+; state.S1_SHOW_A     ; 0              ; 0               ; 0                  ; 0                   ; 0               ; 0                 ; 0                ; 0                  ; 1               ; 1             ;
+; state.S2_SELECT_OP  ; 0              ; 0               ; 0                  ; 0                   ; 0               ; 0                 ; 0                ; 1                  ; 0               ; 1             ;
+; state.S3_SHOW_OP    ; 0              ; 0               ; 0                  ; 0                   ; 0               ; 0                 ; 1                ; 0                  ; 0               ; 1             ;
+; state.S4_PROMPT_B   ; 0              ; 0               ; 0                  ; 0                   ; 0               ; 1                 ; 0                ; 0                  ; 0               ; 1             ;
+; state.S5_SHOW_B     ; 0              ; 0               ; 0                  ; 0                   ; 1               ; 0                 ; 0                ; 0                  ; 0               ; 1             ;
+; state.S6_START_CALC ; 0              ; 0               ; 0                  ; 1                   ; 0               ; 0                 ; 0                ; 0                  ; 0               ; 1             ;
+; state.S7_WAIT_CALC  ; 0              ; 0               ; 1                  ; 0                   ; 0               ; 0                 ; 0                ; 0                  ; 0               ; 1             ;
+; state.S8_RESULT     ; 0              ; 1               ; 0                  ; 0                   ; 0               ; 0                 ; 0                ; 0                  ; 0               ; 1             ;
+; state.S9_ERROR      ; 1              ; 0               ; 0                  ; 0                   ; 0               ; 0                 ; 0                ; 0                  ; 0               ; 1             ;
++---------------------+----------------+-----------------+--------------------+---------------------+-----------------+-------------------+------------------+--------------------+-----------------+---------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|State                                              ;
++-----------------+--------------+----------------+----------------+-----------------+--------------+-------------+--------------+
+; Name            ; State.S_DONE ; State.S_SIGN_R ; State.S_SIGN_Q ; State.S_RESTORE ; State.S_TEST ; State.S_SUB ; State.S_IDLE ;
++-----------------+--------------+----------------+----------------+-----------------+--------------+-------------+--------------+
+; State.S_IDLE    ; 0            ; 0              ; 0              ; 0               ; 0            ; 0           ; 0            ;
+; State.S_SUB     ; 0            ; 0              ; 0              ; 0               ; 0            ; 1           ; 1            ;
+; State.S_TEST    ; 0            ; 0              ; 0              ; 0               ; 1            ; 0           ; 1            ;
+; State.S_RESTORE ; 0            ; 0              ; 0              ; 1               ; 0            ; 0           ; 1            ;
+; State.S_SIGN_Q  ; 0            ; 0              ; 1              ; 0               ; 0            ; 0           ; 1            ;
+; State.S_SIGN_R  ; 0            ; 1              ; 0              ; 0               ; 0            ; 0           ; 1            ;
+; State.S_DONE    ; 1            ; 0              ; 0              ; 0               ; 0            ; 0           ; 1            ;
++-----------------+--------------+----------------+----------------+-----------------+--------------+-------------+--------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------+
+; State Machine - |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|State ;
++--------------+--------------+--------------+--------------+--------------------------+
+; Name         ; State.S_DONE ; State.S_SIGN ; State.S_CALC ; State.S_IDLE             ;
++--------------+--------------+--------------+--------------+--------------------------+
+; State.S_IDLE ; 0            ; 0            ; 0            ; 0                        ;
+; State.S_CALC ; 0            ; 0            ; 1            ; 1                        ;
+; State.S_SIGN ; 0            ; 1            ; 0            ; 1                        ;
+; State.S_DONE ; 1            ; 0            ; 0            ; 1                        ;
++--------------+--------------+--------------+--------------+--------------------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                   ;
++--------------------------------------------------------+---------------------------------------------+
+; Register name                                          ; Reason for Removal                          ;
++--------------------------------------------------------+---------------------------------------------+
+; ButtonRelease:BUTTON|seen_press                        ; Merged with ButtonRelease:BUTTON|stable_key ;
+; Calculator_Core:CONTROL|Divider10:DIV|Data_Divisor[19] ; Stuck at GND due to stuck port data_in      ;
+; Total Number of Removed Registers = 2                  ;                                             ;
++--------------------------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 242   ;
+; Number of registers using Synchronous Clear  ; 40    ;
+; Number of registers using Synchronous Load   ; 10    ;
+; Number of registers using Asynchronous Clear ; 242   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 186   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; ButtonRelease:BUTTON|stable_key        ; 3       ;
+; ButtonRelease:BUTTON|sync2             ; 3       ;
+; ButtonRelease:BUTTON|sync1             ; 1       ;
+; Total number of inverted registers = 3 ;         ;
++----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Calculator_DE10_Lite|ButtonRelease:BUTTON|counter[13]                         ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Quotient_Reg[0]    ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Remainder_Reg[0]   ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Data_Remainder[16] ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Data_Remainder[0]  ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|Data_A[14]      ;
+; 4:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|Data_B[7]       ;
+; 5:1                ; 20 bits   ; 60 LEs        ; 20 LEs               ; 40 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|result_reg[9]                    ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|Bit_Counter[1]  ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Data_Divisor[19]   ;
+; 6:1                ; 18 bits   ; 72 LEs        ; 18 LEs               ; 54 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Data_Quotient[2]   ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 10 LEs               ; 30 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Data_Divisor[9]    ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Bit_Counter[2]     ;
+; 7:1                ; 20 bits   ; 80 LEs        ; 20 LEs               ; 60 LEs                 ; Yes        ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|Data_Product[4] ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Add_Y[3]           ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Add_X              ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Divider10:DIV|Add_X[8]           ;
+; 9:1                ; 7 bits    ; 42 LEs        ; 35 LEs               ; 7 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux75                                   ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |Calculator_DE10_Lite|Calculator_Core:CONTROL|Multiplier10:MUL|Selector55      ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux112                                  ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux115                                  ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux105                                  ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 6 LEs                ; 8 LEs                  ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux108                                  ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux102                                  ;
+; 11:1               ; 7 bits    ; 49 LEs        ; 35 LEs               ; 14 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux96                                   ;
+; 11:1               ; 7 bits    ; 49 LEs        ; 35 LEs               ; 14 LEs                 ; No         ; |Calculator_DE10_Lite|Display6:DISPLAY|Mux87                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |Calculator_DE10_Lite ;
++-----------------+---------+----------------------------------------------------------+
+; Parameter Name  ; Value   ; Type                                                     ;
++-----------------+---------+----------------------------------------------------------+
+; DEBOUNCE_CYCLES ; 1000000 ; Signed Integer                                           ;
++-----------------+---------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ButtonRelease:BUTTON ;
++-----------------+---------+---------------------------------------+
+; Parameter Name  ; Value   ; Type                                  ;
++-----------------+---------+---------------------------------------+
+; debounce_cycles ; 1000000 ; Signed Integer                        ;
++-----------------+---------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Divider10:DIV|FullAdder:\GEN_FA:19:FA"                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; c    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|FullAdder:\GEN_FA:19:FA"                   ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; c    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:9:FA" ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; x    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; y    ; Input  ; Info     ; Stuck at GND                                                                        ;
+; c    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:8:FA" ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                              ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; y    ; Input ; Info     ; Stuck at GND                                                                         ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:7:FA" ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                              ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; y    ; Input ; Info     ; Stuck at GND                                                                         ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:6:FA" ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                              ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; y    ; Input ; Info     ; Stuck at GND                                                                         ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:5:FA" ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                              ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; y    ; Input ; Info     ; Stuck at GND                                                                         ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:4:FA" ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                              ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; y    ; Input ; Info     ; Stuck at GND                                                                         ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:3:FA" ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                              ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; y    ; Input ; Info     ; Stuck at GND                                                                         ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:2:FA" ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                              ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; y    ; Input ; Info     ; Stuck at GND                                                                         ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:1:FA" ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                              ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; y    ; Input ; Info     ; Stuck at GND                                                                         ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A|FullAdder:\GEN_MAG:0:FA" ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                              ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+; y    ; Input ; Info     ; Stuck at GND                                                                         ;
++------+-------+----------+--------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:10:FA"          ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; c    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB"                                  ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; v    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Calculator_Core:CONTROL"                                                                   ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; debug_state ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 71                          ;
+; cycloneiii_ff         ; 242                         ;
+;     CLR               ; 36                          ;
+;     CLR SCLR          ; 20                          ;
+;     ENA CLR           ; 156                         ;
+;     ENA CLR SCLR      ; 20                          ;
+;     ENA CLR SLD       ; 10                          ;
+; cycloneiii_lcell_comb ; 1036                        ;
+;     arith             ; 60                          ;
+;         2 data inputs ; 60                          ;
+;     normal            ; 976                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 87                          ;
+;         3 data inputs ; 168                         ;
+;         4 data inputs ; 713                         ;
+;                       ;                             ;
+; Max LUT depth         ; 26.80                       ;
+; Average LUT depth     ; 15.03                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Wed Oct 14 13:23:53 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Calculator_DE10_Lite -c Calculator_DE10_Lite
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file rtl/fulladder.vhd
+    Info (12022): Found design unit 1: FullAdder-Dataflow File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/FullAdder.vhd Line: 14
+    Info (12023): Found entity 1: FullAdder File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/FullAdder.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file rtl/addersubtractor10.vhd
+    Info (12022): Found design unit 1: AdderSubtractor10-Structural File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/AdderSubtractor10.vhd Line: 14
+    Info (12023): Found entity 1: AdderSubtractor10 File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/AdderSubtractor10.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file rtl/magnitude10.vhd
+    Info (12022): Found design unit 1: Magnitude10-Structural File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Magnitude10.vhd Line: 11
+    Info (12023): Found entity 1: Magnitude10 File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Magnitude10.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file rtl/multiplier10.vhd
+    Info (12022): Found design unit 1: Multiplier10-Structural File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Multiplier10.vhd Line: 16
+    Info (12023): Found entity 1: Multiplier10 File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Multiplier10.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file rtl/divider10.vhd
+    Info (12022): Found design unit 1: Divider10-Structural File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Divider10.vhd Line: 18
+    Info (12023): Found entity 1: Divider10 File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Divider10.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file rtl/buttonrelease.vhd
+    Info (12022): Found design unit 1: ButtonRelease-rtl File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/ButtonRelease.vhd Line: 15
+    Info (12023): Found entity 1: ButtonRelease File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/ButtonRelease.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file rtl/calculator_core.vhd
+    Info (12022): Found design unit 1: Calculator_Core-rtl File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_Core.vhd Line: 23
+    Info (12023): Found entity 1: Calculator_Core File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_Core.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file rtl/display6.vhd
+    Info (12022): Found design unit 1: Display6-rtl File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Display6.vhd Line: 18
+    Info (12023): Found entity 1: Display6 File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Display6.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file rtl/calculator_de10_lite.vhd
+    Info (12022): Found design unit 1: Calculator_DE10_Lite-rtl File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 16
+    Info (12023): Found entity 1: Calculator_DE10_Lite File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 5
+Info (12127): Elaborating entity "Calculator_DE10_Lite" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at Calculator_DE10_Lite.vhd(23): object "unused_debug" assigned a value but never read File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 23
+Info (12128): Elaborating entity "ButtonRelease" for hierarchy "ButtonRelease:BUTTON" File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 25
+Info (12128): Elaborating entity "Calculator_Core" for hierarchy "Calculator_Core:CONTROL" File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 30
+Warning (10036): Verilog HDL or VHDL warning at Calculator_Core.vhd(35): object "unused_overflow" assigned a value but never read File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_Core.vhd Line: 35
+Info (12128): Elaborating entity "AdderSubtractor10" for hierarchy "Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB" File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_Core.vhd Line: 60
+Info (12128): Elaborating entity "FullAdder" for hierarchy "Calculator_Core:CONTROL|AdderSubtractor10:ADD_SUB|FullAdder:\GEN_FA:0:FA" File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/AdderSubtractor10.vhd Line: 33
+Info (12128): Elaborating entity "Multiplier10" for hierarchy "Calculator_Core:CONTROL|Multiplier10:MUL" File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_Core.vhd Line: 66
+Info (12128): Elaborating entity "Magnitude10" for hierarchy "Calculator_Core:CONTROL|Multiplier10:MUL|Magnitude10:MAG_A" File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Multiplier10.vhd Line: 28
+Info (12128): Elaborating entity "Divider10" for hierarchy "Calculator_Core:CONTROL|Divider10:DIV" File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_Core.vhd Line: 69
+Info (12128): Elaborating entity "Display6" for hierarchy "Display6:DISPLAY" File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 36
+Info (13000): Registers with preset signals will power-up high File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/ButtonRelease.vhd Line: 16
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 11
+    Warning (13410): Pin "HEX3[7]" is stuck at VCC File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 11
+    Warning (13410): Pin "HEX4[7]" is stuck at VCC File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 11
+    Warning (13410): Pin "HEX5[7]" is stuck at VCC File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 11
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 12
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 12
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 12
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 12
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 12
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 12
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 12
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 12
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: D:/Calculator_DE10_Lite_Full_Project/Calculator_DE10_Lite_Project/rtl/Calculator_DE10_Lite.vhd Line: 12
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1156 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 58 output pins
+    Info (21061): Implemented 1085 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
+    Info: Peak virtual memory: 4794 megabytes
+    Info: Processing ended: Wed Oct 14 13:24:08 2026
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:33
+
+
